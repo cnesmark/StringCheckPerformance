@@ -118,8 +118,22 @@ namespace StringCheckPerformance
             scpt.Intro();
             scpt.Run(scpt.SSW_CharArray);
             scpt.Run(scpt.SSW_StringStartsWith);
+            scpt.Run(scpt.SSW_StringIndexOf);
         }
 
+        public void Scpt_StringEndsWith_asdf_sdf()
+        {
+            var s = "asdf";
+            var chars = "sdf".ToCharArray();
+
+            var scpt = new StringCheckPerformanceTester_StringEndsWith(_pp, s, _n, chars);
+
+            scpt.Intro();
+
+            scpt.Run(scpt.SEW_CharArray);
+            scpt.Run(scpt.SEW_StringEndsWith);
+            scpt.Run(scpt.SEW_StringIndexOf);
+        }
 
     }
 }

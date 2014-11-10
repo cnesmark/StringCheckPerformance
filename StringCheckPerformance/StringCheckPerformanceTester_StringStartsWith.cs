@@ -47,6 +47,7 @@ namespace StringCheckPerformance
             return equals;
         }
 
+
         public bool SSW_StringStartsWith()
         {
             for (var i = 0; i < _n; i++)
@@ -54,6 +55,16 @@ namespace StringCheckPerformance
                 if (_s.StartsWith(_charsAsString)) { }
             }
             return _s.StartsWith(_charsAsString);
+        }
+
+
+        public bool SSW_StringIndexOf()
+        {
+            for (var i = 0; i < _n; i++)
+            {
+                if (_s.IndexOf(_charsAsString) == 0) { }
+            }
+            return _s.IndexOf(_charsAsString) == 0;
         }
 
     }

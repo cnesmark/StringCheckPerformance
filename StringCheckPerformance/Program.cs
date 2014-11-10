@@ -17,17 +17,31 @@ namespace StringCheckPerformance
             var pp = new PrettyPrint();
 
             var scptr = new StringCheckPerformanceTestRunner(pp, n);
+
+
+            //First character
+
             //scptr.Scpt_FirstCharacter_asdf_a();
             //scptr.Scpt_FirstCharacter_asdf_f();
 
+            //scptr.Scpt_FirstCharacter_jklø_ø();
+            //scptr.Scpt_LastCharacter_jklø_ø();
+
+
+            //Last character
+            
             //scptr.Scpt_LastCharacter_asdf_a();
             //scptr.Scpt_LastCharacter_asdf_f();
 
-            scptr.Scpt_FirstCharacter_jklø_ø();
-            scptr.Scpt_LastCharacter_jklø_ø();
+
+            //Starts with
+
+            scptr.Scpt_StringStartsWith_asdf_asd();
 
 
-            //scptr.Scpt_StringStartsWith_asdf_asd();
+            //Ends with
+
+            scptr.Scpt_StringEndsWith_asdf_sdf();
 
             Console.ReadLine();
         }
