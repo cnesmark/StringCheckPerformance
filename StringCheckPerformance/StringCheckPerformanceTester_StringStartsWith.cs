@@ -8,19 +8,19 @@ namespace StringCheckPerformance
 {
     class StringCheckPerformanceTester_StringStartsWith : StringCheckPerformanceTester
     {
-        public StringCheckPerformanceTester_StringStartsWith(PrettyPrint pp, string haystack, int repetitions, char[] needle) : base(pp, haystack, repetitions, needle)
+        public StringCheckPerformanceTester_StringStartsWith(PrettyPrint pp, string haystack, int iterations, char[] needle) : base(pp, haystack, iterations, needle)
         {
             
         }
 
         public override void Intro()
         {
-            _pp.Intro_FirstString(_haystack, _repetitions, _needleCharsAsString);
+            _pp.Intro_FirstString(_haystack, _needleCharsAsString);
         }
 
         public bool SSW_CharArray()
         {
-            for (var i = 0; i < _repetitions; i++)
+            for (var i = 0; i < _iterations; i++)
             {
                 if (_haystack.Length > _needleChars.Length)
                 {
@@ -50,7 +50,7 @@ namespace StringCheckPerformance
 
         public bool SSW_StringStartsWith()
         {
-            for (var i = 0; i < _repetitions; i++)
+            for (var i = 0; i < _iterations; i++)
             {
                 if (_haystack.StartsWith(_needleCharsAsString)) { }
             }
@@ -60,7 +60,7 @@ namespace StringCheckPerformance
 
         public bool SSW_StringIndexOf()
         {
-            for (var i = 0; i < _repetitions; i++)
+            for (var i = 0; i < _iterations; i++)
             {
                 if (_haystack.IndexOf(_needleCharsAsString) == 0) { }
             }

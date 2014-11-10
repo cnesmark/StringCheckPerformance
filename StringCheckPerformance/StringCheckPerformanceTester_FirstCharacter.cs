@@ -8,19 +8,19 @@ namespace StringCheckPerformance
 {
     class StringCheckPerformanceTester_FirstCharacter : StringCheckPerformanceTester
     {
-        public StringCheckPerformanceTester_FirstCharacter(PrettyPrint pp, string haystack, int repetitions, char needle) : base(pp, haystack, repetitions, needle)
+        public StringCheckPerformanceTester_FirstCharacter(PrettyPrint pp, string haystack, int iterations, char needle) : base(pp, haystack, iterations, needle)
         {
             
         }
 
         public override void Intro()
         {
-            _pp.Intro_FirstChar(_haystack, _repetitions, _needleChar);
+            _pp.Intro_FirstChar(_haystack, _needleChar);
         }
 
         public bool FC_StringIndex0()
         {
-            for (var i = 0; i < _repetitions; i++)
+            for (var i = 0; i < _iterations; i++)
             {
                 if (_haystack[0] == _needleChar) { }
             }
@@ -29,7 +29,7 @@ namespace StringCheckPerformance
 
         public bool FC_StringIndex0Equals()
         {
-            for (var i = 0; i < _repetitions; i++)
+            for (var i = 0; i < _iterations; i++)
             {
                 if (_haystack[0].Equals(_needleChar)) { }
             }
@@ -38,7 +38,7 @@ namespace StringCheckPerformance
 
         public bool FC_LinqFirst()
         {
-            for (var i = 0; i < _repetitions; i++)
+            for (var i = 0; i < _iterations; i++)
             {
                 if (_haystack.First() == _needleChar) { }
             }
@@ -47,7 +47,7 @@ namespace StringCheckPerformance
 
         public bool FC_StringStartsWith()
         {
-            for (var i = 0; i < _repetitions; i++)
+            for (var i = 0; i < _iterations; i++)
             {
                 if (_haystack.StartsWith(_needleCharAsString)) { }
             }
@@ -56,7 +56,7 @@ namespace StringCheckPerformance
 
         public bool FC_StringIndexOf()
         {
-            for (var i = 0; i < _repetitions; i++)
+            for (var i = 0; i < _iterations; i++)
             {
                 if (_haystack.IndexOf(_needleChar) == 0) { }
             }

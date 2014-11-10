@@ -9,19 +9,19 @@ namespace StringCheckPerformance
 {
     class StringCheckPerformanceTester_LastCharacter : StringCheckPerformanceTester
     {
-        public StringCheckPerformanceTester_LastCharacter(PrettyPrint pp, string haystack, int repetitions, char needle) : base(pp, haystack, repetitions, needle)
+        public StringCheckPerformanceTester_LastCharacter(PrettyPrint pp, string haystack, int iterations, char needle) : base(pp, haystack, iterations, needle)
         {
             
         }
 
         public override void Intro()
         {
-            _pp.Intro_LastChar(_haystack, _repetitions, _needleChar);
+            _pp.Intro_LastChar(_haystack, _needleChar);
         }
 
         public bool LC_StringIndexLength()
         {
-            for (var i = 0; i < _repetitions; i++)
+            for (var i = 0; i < _iterations; i++)
             {
                 if (_haystack[_haystack.Length - 1] == _needleChar) { }
             }
@@ -30,7 +30,7 @@ namespace StringCheckPerformance
 
         public bool LC_StringIndexLengthEquals()
         {
-            for (var i = 0; i < _repetitions; i++)
+            for (var i = 0; i < _iterations; i++)
             {
                 if (_haystack[_haystack.Length - 1].Equals(_needleChar)) { }
             }
@@ -39,7 +39,7 @@ namespace StringCheckPerformance
 
         public bool LC_LinqLast()
         {
-            for (var i = 0; i < _repetitions; i++)
+            for (var i = 0; i < _iterations; i++)
             {
                 if (_haystack.Last() == _needleChar) { }
             }
@@ -48,7 +48,7 @@ namespace StringCheckPerformance
 
         public bool LC_StringEndsWith()
         {
-            for (var i = 0; i < _repetitions; i++)
+            for (var i = 0; i < _iterations; i++)
             {
                 if (_haystack.EndsWith(_needleCharAsString)) { }
             }
@@ -57,7 +57,7 @@ namespace StringCheckPerformance
 
         public bool LC_StringIndexOf()
         {
-            for (var i = 0; i < _repetitions; i++)
+            for (var i = 0; i < _iterations; i++)
             {
                 if (_haystack.IndexOf(_needleChar) == _haystack.Length - 1) { }
             }

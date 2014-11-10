@@ -13,26 +13,26 @@ namespace StringCheckPerformance
     {
         protected PrettyPrint _pp;
         protected string _haystack;
-        protected int _repetitions;
+        protected int _iterations;
         protected char _needleChar;
         protected string _needleCharAsString;
         protected char[] _needleChars;
         protected string _needleCharsAsString;
 
-        public StringCheckPerformanceTester(PrettyPrint pp, string haystack, int repetitions, char needle)
+        public StringCheckPerformanceTester(PrettyPrint pp, string haystack, int iterations, char needle)
         {
             _pp = pp;
             _haystack = haystack;
-            _repetitions = repetitions;
+            _iterations = iterations;
             _needleChar = needle;
             _needleCharAsString = needle.ToString(CultureInfo.CurrentCulture);
         }
 
-        public StringCheckPerformanceTester(PrettyPrint pp, string haystack, int repetitions, char[] needle)
+        public StringCheckPerformanceTester(PrettyPrint pp, string haystack, int iterations, char[] needle)
         {
             _pp = pp;
             _haystack = haystack;
-            _repetitions = repetitions;
+            _iterations = iterations;
             _needleChars = needle;
             _needleCharsAsString = new string(_needleChars);
         }

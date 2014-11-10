@@ -9,20 +9,20 @@ namespace StringCheckPerformance
     class StringCheckPerformanceTestRunner
     {
         private PrettyPrint _pp;
-        private int _n;
+        private int _iterations;
 
-        public StringCheckPerformanceTestRunner(PrettyPrint pp, int n)
+        public StringCheckPerformanceTestRunner(PrettyPrint pp, int iterations)
         {
             _pp = pp;
-            _n = n;
+            _iterations = iterations;
         }
 
         public void Scpt_FirstCharacter_asdf_a()
         {
-            var s = "asdf";
-            var c = 'a';
+            var haystack = "asdf";
+            var needle = 'a';
 
-            var scpt = new StringCheckPerformanceTester_FirstCharacter(_pp, s, _n, c);
+            var scpt = new StringCheckPerformanceTester_FirstCharacter(_pp, haystack, _iterations, needle);
 
             scpt.Intro();
             scpt.Run(scpt.FC_StringIndex0);
@@ -34,10 +34,10 @@ namespace StringCheckPerformance
 
         public void Scpt_FirstCharacter_asdf_f()
         {
-            var s = "asdf";
-            var c = 'f';
+            var haystack = "asdf";
+            var needle = 'f';
 
-            var scpt = new StringCheckPerformanceTester_FirstCharacter(_pp, s, _n, c);
+            var scpt = new StringCheckPerformanceTester_FirstCharacter(_pp, haystack, _iterations, needle);
 
             scpt.Intro();
             scpt.Run(scpt.FC_StringIndex0);
@@ -49,10 +49,10 @@ namespace StringCheckPerformance
 
         public void Scpt_LastCharacter_asdf_a()
         {
-            var s = "asdf";
-            var c = 'a';
+            var haystack = "asdf";
+            var needle = 'a';
 
-            var scpt = new StringCheckPerformanceTester_LastCharacter(_pp, s, _n, c);
+            var scpt = new StringCheckPerformanceTester_LastCharacter(_pp, haystack, _iterations, needle);
 
             scpt.Intro();
             scpt.Run(scpt.LC_StringIndexLength);
@@ -64,10 +64,10 @@ namespace StringCheckPerformance
 
         public void Scpt_LastCharacter_asdf_f()
         {
-            var s = "asdf";
-            var c = 'f';
+            var haystack = "asdf";
+            var needle = 'f';
 
-            var scpt = new StringCheckPerformanceTester_LastCharacter(_pp, s, _n, c);
+            var scpt = new StringCheckPerformanceTester_LastCharacter(_pp, haystack, _iterations, needle);
 
             scpt.Intro();
             scpt.Run(scpt.LC_StringIndexLength);
@@ -79,10 +79,10 @@ namespace StringCheckPerformance
 
         public void Scpt_FirstCharacter_jklø_ø()
         {
-            var s = "jklø";
-            var c = 'ø';
+            var haystack = "jklø";
+            var needle = 'ø';
 
-            var scpt = new StringCheckPerformanceTester_FirstCharacter(_pp, s, _n, c);
+            var scpt = new StringCheckPerformanceTester_FirstCharacter(_pp, haystack, _iterations, needle);
 
             scpt.Intro();
             scpt.Run(scpt.FC_StringIndex0);
@@ -94,10 +94,10 @@ namespace StringCheckPerformance
 
         public void Scpt_LastCharacter_jklø_ø()
         {
-            var s = "jklø";
-            var c = 'ø';
+            var haystack = "jklø";
+            var needle = 'ø';
 
-            var scpt = new StringCheckPerformanceTester_LastCharacter(_pp, s, _n, c);
+            var scpt = new StringCheckPerformanceTester_LastCharacter(_pp, haystack, _iterations, needle);
 
             scpt.Intro();
             scpt.Run(scpt.LC_StringIndexLength);
@@ -110,10 +110,23 @@ namespace StringCheckPerformance
 
         public void Scpt_StringStartsWith_asdf_asd()
         {
-            var s = "asdf";
-            var chars = "asd".ToCharArray();
+            var haystack = "asdf";
+            var needleChars = "asd".ToCharArray();
 
-            var scpt = new StringCheckPerformanceTester_StringStartsWith(_pp, s, _n, chars);
+            var scpt = new StringCheckPerformanceTester_StringStartsWith(_pp, haystack, _iterations, needleChars);
+
+            scpt.Intro();
+            scpt.Run(scpt.SSW_CharArray);
+            scpt.Run(scpt.SSW_StringStartsWith);
+            scpt.Run(scpt.SSW_StringIndexOf);
+        }
+
+        public void Scpt_StringStartsWith_asdf_abc()
+        {
+            var haystack = "asdf";
+            var needleChars = "abc".ToCharArray();
+
+            var scpt = new StringCheckPerformanceTester_StringStartsWith(_pp, haystack, _iterations, needleChars);
 
             scpt.Intro();
             scpt.Run(scpt.SSW_CharArray);
@@ -123,10 +136,24 @@ namespace StringCheckPerformance
 
         public void Scpt_StringEndsWith_asdf_sdf()
         {
-            var s = "asdf";
-            var chars = "sdf".ToCharArray();
+            var haystack = "asdf";
+            var needleChars = "sdf".ToCharArray();
 
-            var scpt = new StringCheckPerformanceTester_StringEndsWith(_pp, s, _n, chars);
+            var scpt = new StringCheckPerformanceTester_StringEndsWith(_pp, haystack, _iterations, needleChars);
+
+            scpt.Intro();
+
+            scpt.Run(scpt.SEW_CharArray);
+            scpt.Run(scpt.SEW_StringEndsWith);
+            scpt.Run(scpt.SEW_StringIndexOf);
+        }
+
+        public void Scpt_StringEndsWith_asdf_cba()
+        {
+            var haystack = "asdf";
+            var needleChars = "cba".ToCharArray();
+
+            var scpt = new StringCheckPerformanceTester_StringEndsWith(_pp, haystack, _iterations, needleChars);
 
             scpt.Intro();
 

@@ -8,19 +8,19 @@ namespace StringCheckPerformance
 {
     class StringCheckPerformanceTester_StringEndsWith : StringCheckPerformanceTester
     {
-        public StringCheckPerformanceTester_StringEndsWith(PrettyPrint pp, string haystack, int repetitions, char[] needle) : base(pp, haystack, repetitions, needle)
+        public StringCheckPerformanceTester_StringEndsWith(PrettyPrint pp, string haystack, int iterations, char[] needle) : base(pp, haystack, iterations, needle)
         {
             
         }
 
         public override void Intro()
         {
-            _pp.Intro_LastString(_haystack, _repetitions, _needleCharsAsString);
+            _pp.Intro_LastString(_haystack, _needleCharsAsString);
         }
 
         public bool SEW_CharArray()
         {
-            for (var i = 0; i < _repetitions; i++)
+            for (var i = 0; i < _iterations; i++)
             {
                 if (_haystack.Length > _needleChars.Length)
                 {
@@ -51,7 +51,7 @@ namespace StringCheckPerformance
 
         public bool SEW_StringEndsWith()
         {
-            for (var i = 0; i < _repetitions; i++)
+            for (var i = 0; i < _iterations; i++)
             {
                 if (_haystack.EndsWith(_needleCharsAsString)) { }
             }
@@ -61,7 +61,7 @@ namespace StringCheckPerformance
 
         public bool SEW_StringIndexOf()
         {
-            for (var i = 0; i < _repetitions; i++)
+            for (var i = 0; i < _iterations; i++)
             {
                 if (_haystack.IndexOf(_needleCharsAsString) == _haystack.Length - _needleCharsAsString.Length) { }
             }

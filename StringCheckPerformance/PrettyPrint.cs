@@ -9,56 +9,58 @@ namespace StringCheckPerformance
 {
     class PrettyPrint
     {
-        public void Intro_FirstChar(string stringToCheck, int repetitions, char character)
+        public void Intro_TestRunner(int iterations)
         {
-            IntroChar(stringToCheck, character, "starts with", repetitions);
+            Console.WriteLine("Iterations: " + iterations.ToString("### ### ### ###"));
         }
 
-        public void Intro_LastChar(string stringToCheck, int repetitions, char character)
+        public void Intro_FirstChar(string stringToCheck, char character)
         {
-            IntroChar(stringToCheck, character, "ends with", repetitions);
+            IntroChar(stringToCheck, character, "start with");
         }
 
-        public void Intro_FirstString(string stringToCheck, int repetitions, string s)
+        public void Intro_LastChar(string stringToCheck, char character)
         {
-            IntroString(stringToCheck, s, "starts with", repetitions);
+            IntroChar(stringToCheck, character, "end with");
         }
 
-        public void Intro_LastString(string stringToCheck, int repetitions, string s)
+        public void Intro_FirstString(string stringToCheck, string s)
         {
-            IntroString(stringToCheck, s, "ends with", repetitions);
+            IntroString(stringToCheck, s, "start with");
+        }
+
+        public void Intro_LastString(string stringToCheck, string s)
+        {
+            IntroString(stringToCheck, s, "end with");
         }
 
 
-        public void IntroChar(string stringToCheck, char character, string location, int repetitions)
+        public void IntroChar(string stringToCheck, char character, string location)
         {
-            var message = "Check if string \"{0}\" {1} the character '{2}'.";
-            Intro(message, stringToCheck, location, character.ToString(CultureInfo.InvariantCulture), repetitions);
+            var message = "Does string \"{0}\" {1} character '{2}'?";
+            Intro(message, stringToCheck, location, character.ToString(CultureInfo.InvariantCulture));
         }
 
-        public void IntroString(string stringToCheck, string s, string location, int repetitions)
+        public void IntroString(string stringToCheck, string s, string location)
         {
-            var message = "Check if string \"{0}\" {1} the string \"{2}\".";
-            Intro(message, stringToCheck, location, s, repetitions);
+            var message = "Does string \"{0}\" {1} string \"{2}\"?";
+            Intro(message, stringToCheck, location, s);
         }
 
-        public void Intro(string message, string stringToCheck, string s, string characterPosition, int repetitions)
+        public void Intro(string message, string stringToCheck, string s, string characterPosition)
         {
             Console.WriteLine();
-            Console.WriteLine();
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.ForegroundColor = ConsoleColor.Yellow;
 
             Console.WriteLine(message, stringToCheck, s, characterPosition);
-            Console.WriteLine("Repetitions: " + repetitions.ToString("### ### ### ###"));
 
             Console.ForegroundColor = ConsoleColor.Gray;
-            Console.WriteLine();
         }
 
 
         public void Heading(string heading)
         {
-            Console.Write((heading).PadRight(40));
+            Console.Write((heading).PadRight(30));
         }
 
         public void Statement(string statement)
@@ -68,7 +70,7 @@ namespace StringCheckPerformance
 
         public void Result(long result, bool found)
         {
-            Console.WriteLine(found.ToString().ToUpper().PadRight(10) + "  " + result + " ms");
+            Console.WriteLine(found.ToString().ToUpper().PadRight(8) + result.ToString().PadLeft(5) + " ms");
         }
 
         public void Error(string error)
