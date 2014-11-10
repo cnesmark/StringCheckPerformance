@@ -12,41 +12,41 @@ namespace StringCheckPerformance
     abstract class StringCheckPerformanceTester
     {
         protected PrettyPrint _pp;
-        protected string _s;
-        protected int _n;
-        protected char _c;
-        protected string _cAsString;
-        protected char[] _chars;
-        protected string _charsAsString;
+        protected string _haystack;
+        protected int _repetitions;
+        protected char _needleChar;
+        protected string _needleCharAsString;
+        protected char[] _needleChars;
+        protected string _needleCharsAsString;
 
-        public StringCheckPerformanceTester(PrettyPrint pp, string s, int n, char c)
+        public StringCheckPerformanceTester(PrettyPrint pp, string haystack, int repetitions, char needle)
         {
             _pp = pp;
-            _s = s;
-            _n = n;
-            _c = c;
-            _cAsString = c.ToString(CultureInfo.CurrentCulture);
+            _haystack = haystack;
+            _repetitions = repetitions;
+            _needleChar = needle;
+            _needleCharAsString = needle.ToString(CultureInfo.CurrentCulture);
         }
 
-        public StringCheckPerformanceTester(PrettyPrint pp, string s, int n, char[] chars)
+        public StringCheckPerformanceTester(PrettyPrint pp, string haystack, int repetitions, char[] needle)
         {
             _pp = pp;
-            _s = s;
-            _n = n;
-            _chars = chars;
-            _charsAsString = new string(_chars);
+            _haystack = haystack;
+            _repetitions = repetitions;
+            _needleChars = needle;
+            _needleCharsAsString = new string(_needleChars);
         }
 
         public delegate bool StringCheckPerformanceTest();
 
-        public void Run(StringCheckPerformanceTest d)
+        public void Run(StringCheckPerformanceTest stringCheckPerformanceTest)
         {
-            _pp.Heading(d.GetMethodInfo().Name);
-            var sw = new Stopwatch();
-            sw.Start();
-            var r = d();
-            sw.Stop();
-            _pp.Result(sw.ElapsedMilliseconds, r);
+            _pp.Heading(stringCheckPerformanceTest.GetMethodInfo().Name);
+            var stopWatch = new Stopwatch();
+            stopWatch.Start();
+            var testToRun = stringCheckPerformanceTest();
+            stopWatch.Stop();
+            _pp.Result(stopWatch.ElapsedMilliseconds, testToRun);
         }
 
         public abstract void Intro();

@@ -9,59 +9,59 @@ namespace StringCheckPerformance
 {
     class StringCheckPerformanceTester_LastCharacter : StringCheckPerformanceTester
     {
-        public StringCheckPerformanceTester_LastCharacter(PrettyPrint pp, string s, int n, char c) : base(pp, s, n, c)
+        public StringCheckPerformanceTester_LastCharacter(PrettyPrint pp, string haystack, int repetitions, char needle) : base(pp, haystack, repetitions, needle)
         {
             
         }
 
         public override void Intro()
         {
-            _pp.Intro_LastChar(_s, _n, _c);
+            _pp.Intro_LastChar(_haystack, _repetitions, _needleChar);
         }
 
         public bool LC_StringIndexLength()
         {
-            for (var i = 0; i < _n; i++)
+            for (var i = 0; i < _repetitions; i++)
             {
-                if (_s[_s.Length - 1] == _c) { }
+                if (_haystack[_haystack.Length - 1] == _needleChar) { }
             }
-            return _s[_s.Length - 1] == _c;
+            return _haystack[_haystack.Length - 1] == _needleChar;
         }
 
         public bool LC_StringIndexLengthEquals()
         {
-            for (var i = 0; i < _n; i++)
+            for (var i = 0; i < _repetitions; i++)
             {
-                if (_s[_s.Length - 1].Equals(_c)) { }
+                if (_haystack[_haystack.Length - 1].Equals(_needleChar)) { }
             }
-            return _s[_s.Length - 1].Equals(_c);
+            return _haystack[_haystack.Length - 1].Equals(_needleChar);
         }
 
         public bool LC_LinqLast()
         {
-            for (var i = 0; i < _n; i++)
+            for (var i = 0; i < _repetitions; i++)
             {
-                if (_s.Last() == _c) { }
+                if (_haystack.Last() == _needleChar) { }
             }
-            return _s.Last() == _c;
+            return _haystack.Last() == _needleChar;
         }
 
         public bool LC_StringEndsWith()
         {
-            for (var i = 0; i < _n; i++)
+            for (var i = 0; i < _repetitions; i++)
             {
-                if (_s.EndsWith(_cAsString)) { }
+                if (_haystack.EndsWith(_needleCharAsString)) { }
             }
-            return _s.EndsWith(_cAsString);
+            return _haystack.EndsWith(_needleCharAsString);
         }
 
         public bool LC_StringIndexOf()
         {
-            for (var i = 0; i < _n; i++)
+            for (var i = 0; i < _repetitions; i++)
             {
-                if (_s.IndexOf(_c) == _s.Length - 1) { }
+                if (_haystack.IndexOf(_needleChar) == _haystack.Length - 1) { }
             }
-            return _s.IndexOf(_c) == _s.Length - 1;
+            return _haystack.IndexOf(_needleChar) == _haystack.Length - 1;
         }
     }
 }

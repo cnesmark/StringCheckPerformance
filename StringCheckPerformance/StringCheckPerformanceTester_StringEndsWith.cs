@@ -8,34 +8,34 @@ namespace StringCheckPerformance
 {
     class StringCheckPerformanceTester_StringEndsWith : StringCheckPerformanceTester
     {
-        public StringCheckPerformanceTester_StringEndsWith(PrettyPrint pp, string s, int n, char[] chars) : base(pp, s, n, chars)
+        public StringCheckPerformanceTester_StringEndsWith(PrettyPrint pp, string haystack, int repetitions, char[] needle) : base(pp, haystack, repetitions, needle)
         {
             
         }
 
         public override void Intro()
         {
-            _pp.Intro_LastString(_s, _n, _charsAsString);
+            _pp.Intro_LastString(_haystack, _repetitions, _needleCharsAsString);
         }
 
         public bool SEW_CharArray()
         {
-            for (var i = 0; i < _n; i++)
+            for (var i = 0; i < _repetitions; i++)
             {
-                if (_s.Length > _chars.Length)
+                if (_haystack.Length > _needleChars.Length)
                 {
-                    var startIndex = _s.Length - _chars.Length;
-                    for (var j = 0; j < _chars.Length; j++)
+                    var startIndex = _haystack.Length - _needleChars.Length;
+                    for (var j = 0; j < _needleChars.Length; j++)
                     {
-                        if (_s[j + startIndex] == _chars[j]) { }
+                        if (_haystack[j + startIndex] == _needleChars[j]) { }
                     }
                 }
             }
 
             var equals = false;
-            for (var j = 0; j < _chars.Length; j++)
+            for (var j = 0; j < _needleChars.Length; j++)
             {
-                if (_s[j + _s.Length - _chars.Length] == _chars[j])
+                if (_haystack[j + _haystack.Length - _needleChars.Length] == _needleChars[j])
                 {
                     equals = true;
                 }
@@ -51,21 +51,21 @@ namespace StringCheckPerformance
 
         public bool SEW_StringEndsWith()
         {
-            for (var i = 0; i < _n; i++)
+            for (var i = 0; i < _repetitions; i++)
             {
-                if (_s.EndsWith(_charsAsString)) { }
+                if (_haystack.EndsWith(_needleCharsAsString)) { }
             }
-            return _s.EndsWith(_charsAsString);
+            return _haystack.EndsWith(_needleCharsAsString);
         }
 
 
         public bool SEW_StringIndexOf()
         {
-            for (var i = 0; i < _n; i++)
+            for (var i = 0; i < _repetitions; i++)
             {
-                if (_s.IndexOf(_charsAsString) == _s.Length - _charsAsString.Length) { }
+                if (_haystack.IndexOf(_needleCharsAsString) == _haystack.Length - _needleCharsAsString.Length) { }
             }
-            return _s.IndexOf(_charsAsString) == _s.Length - _charsAsString.Length;
+            return _haystack.IndexOf(_needleCharsAsString) == _haystack.Length - _needleCharsAsString.Length;
         }
     }
 }

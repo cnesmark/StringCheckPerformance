@@ -8,33 +8,33 @@ namespace StringCheckPerformance
 {
     class StringCheckPerformanceTester_StringStartsWith : StringCheckPerformanceTester
     {
-        public StringCheckPerformanceTester_StringStartsWith(PrettyPrint pp, string s, int n, char[] chars) : base(pp, s, n, chars)
+        public StringCheckPerformanceTester_StringStartsWith(PrettyPrint pp, string haystack, int repetitions, char[] needle) : base(pp, haystack, repetitions, needle)
         {
             
         }
 
         public override void Intro()
         {
-            _pp.Intro_FirstString(_s, _n, _charsAsString);
+            _pp.Intro_FirstString(_haystack, _repetitions, _needleCharsAsString);
         }
 
         public bool SSW_CharArray()
         {
-            for (var i = 0; i < _n; i++)
+            for (var i = 0; i < _repetitions; i++)
             {
-                if (_s.Length > _chars.Length)
+                if (_haystack.Length > _needleChars.Length)
                 {
-                    for (var j = 0; j < _chars.Length; j++)
+                    for (var j = 0; j < _needleChars.Length; j++)
                     {
-                        if (_s[j] == _chars[j]) { }
+                        if (_haystack[j] == _needleChars[j]) { }
                     }
                 }
             }
 
             var equals = false;
-            for (var j = 0; j < _chars.Length; j++)
+            for (var j = 0; j < _needleChars.Length; j++)
             {
-                if (_s[j] == _chars[j])
+                if (_haystack[j] == _needleChars[j])
                 {
                     equals = true;
                 }
@@ -50,21 +50,21 @@ namespace StringCheckPerformance
 
         public bool SSW_StringStartsWith()
         {
-            for (var i = 0; i < _n; i++)
+            for (var i = 0; i < _repetitions; i++)
             {
-                if (_s.StartsWith(_charsAsString)) { }
+                if (_haystack.StartsWith(_needleCharsAsString)) { }
             }
-            return _s.StartsWith(_charsAsString);
+            return _haystack.StartsWith(_needleCharsAsString);
         }
 
 
         public bool SSW_StringIndexOf()
         {
-            for (var i = 0; i < _n; i++)
+            for (var i = 0; i < _repetitions; i++)
             {
-                if (_s.IndexOf(_charsAsString) == 0) { }
+                if (_haystack.IndexOf(_needleCharsAsString) == 0) { }
             }
-            return _s.IndexOf(_charsAsString) == 0;
+            return _haystack.IndexOf(_needleCharsAsString) == 0;
         }
 
     }

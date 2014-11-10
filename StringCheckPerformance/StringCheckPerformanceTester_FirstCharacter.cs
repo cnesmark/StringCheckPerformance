@@ -8,59 +8,59 @@ namespace StringCheckPerformance
 {
     class StringCheckPerformanceTester_FirstCharacter : StringCheckPerformanceTester
     {
-        public StringCheckPerformanceTester_FirstCharacter(PrettyPrint pp, string s, int n, char c) : base(pp, s, n, c)
+        public StringCheckPerformanceTester_FirstCharacter(PrettyPrint pp, string haystack, int repetitions, char needle) : base(pp, haystack, repetitions, needle)
         {
             
         }
 
         public override void Intro()
         {
-            _pp.Intro_FirstChar(_s, _n, _c);
+            _pp.Intro_FirstChar(_haystack, _repetitions, _needleChar);
         }
 
         public bool FC_StringIndex0()
         {
-            for (var i = 0; i < _n; i++)
+            for (var i = 0; i < _repetitions; i++)
             {
-                if (_s[0] == _c) { }
+                if (_haystack[0] == _needleChar) { }
             }
-            return _s[0] == _c;
+            return _haystack[0] == _needleChar;
         }
 
         public bool FC_StringIndex0Equals()
         {
-            for (var i = 0; i < _n; i++)
+            for (var i = 0; i < _repetitions; i++)
             {
-                if (_s[0].Equals(_c)) { }
+                if (_haystack[0].Equals(_needleChar)) { }
             }
-            return _s[0].Equals(_c);
+            return _haystack[0].Equals(_needleChar);
         }
 
         public bool FC_LinqFirst()
         {
-            for (var i = 0; i < _n; i++)
+            for (var i = 0; i < _repetitions; i++)
             {
-                if (_s.First() == _c) { }
+                if (_haystack.First() == _needleChar) { }
             }
-            return _s.First() == _c;
+            return _haystack.First() == _needleChar;
         }
 
         public bool FC_StringStartsWith()
         {
-            for (var i = 0; i < _n; i++)
+            for (var i = 0; i < _repetitions; i++)
             {
-                if (_s.StartsWith(_cAsString)) { }
+                if (_haystack.StartsWith(_needleCharAsString)) { }
             }
-            return _s.StartsWith(_cAsString);
+            return _haystack.StartsWith(_needleCharAsString);
         }
 
         public bool FC_StringIndexOf()
         {
-            for (var i = 0; i < _n; i++)
+            for (var i = 0; i < _repetitions; i++)
             {
-                if (_s.IndexOf(_c) == 0) { }
+                if (_haystack.IndexOf(_needleChar) == 0) { }
             }
-            return _s.IndexOf(_c) == 0;
+            return _haystack.IndexOf(_needleChar) == 0;
         }
     }
 }
